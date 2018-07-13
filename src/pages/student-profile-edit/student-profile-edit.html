@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Edit profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <form (ngSubmit)="editProfile()" [formGroup]="editForm">
+    <ion-list>
+      <ion-item [ngClass]="{ invalid: firstNameErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="First name" formControlName="firstName"></ion-input>
+      </ion-item>
+      <div ngxErrors="firstName" #firstNameErrors="ngxErrors">
+        <div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Enter valid first name</div>
+      </div>
+      <ion-item [ngClass]="{ invalid: middleNameErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Middle name" formControlName="middleName"></ion-input>
+      </ion-item>
+      <div ngxErrors="middleName" #middleNameErrors="ngxErrors">
+        <div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Enter valid middle name</div>
+      </div>
+      <ion-item [ngClass]="{ invalid: lastNameErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Last name" formControlName="lastName"></ion-input>
+      </ion-item>
+      <div ngxErrors="lastName" #lastNameErrors="ngxErrors">
+        <div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Enter valid last name</div>
+      </div>
+      <ion-item [ngClass]="{ invalid: semesterErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Semester" formControlName="semester"></ion-input>
+      </ion-item>
+      <div ngxErrors="semester" #semesterErrors="ngxErrors">
+        <div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Enter valid semester</div>
+      </div>
+    </ion-list>
+    <div class="form-error">{{ editError }}</div>
+    <button ion-button full type="submit" [disabled]="!editForm.valid">Update</button>
+  </form> -->
+
+  <form (ngSubmit)="editProfile()" [formGroup]="editForm">
+    <ion-list>
+      <ion-item [ngClass]="{ invalid: firstNameErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="First name" formControlName="firstName"></ion-input>
+      </ion-item>
+     
+      <ion-item [ngClass]="{ invalid: middleNameErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Middle name" formControlName="middleName"></ion-input>
+      </ion-item>
+     
+      <ion-item [ngClass]="{ invalid: lastNameErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Last name" formControlName="lastName"></ion-input>
+      </ion-item>
+     
+      <ion-item [ngClass]="{ invalid: semesterErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Semester" formControlName="semester"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <div class="form-error">{{ editError }}</div>
+    <button ion-button full type="submit" [disabled]="!editForm.valid">Update</button>
+  </form>
+</ion-content>

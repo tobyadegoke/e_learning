@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Forum</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p *ngIf="msg">{{ msg }}</p>
+  <div *ngIf="posts">
+    <ion-card *ngFor="let post of posts">
+      <h1>{{ post.title }}</h1>
+      <p style="color: #555">{{ post.post }}</p>
+      <small>{{ post.time }}</small>
+      <ion-grid>
+        <ion-row no-padding>
+          <ion-col col-xs-4>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name="text"></ion-icon>
+              Comment
+            </button>
+          </ion-col>
+          <ion-col col-xs-4>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name="thumbs-up"></ion-icon>
+              Like
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div style="margin: 0 25px">
+        <form (ngSubmit)="addForumComment(post.id)" [formGroup]="addCommentForm">
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Write a comment...</ion-label>
+              <ion-textarea formControlName="comment"></ion-textarea>
+            </ion-item>
+          </ion-list>
+          <button ion-button small type="submit">Comment</button>
+        </form>
+      </div>
+    </ion-card>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="light" mini><ion-icon name="create"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab (click)="goToAddPost();"><ion-icon name="add-circle"></ion-icon></button>
+      <button ion-fab (click)="goToRemovePost();"><ion-icon name="remove-circle"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

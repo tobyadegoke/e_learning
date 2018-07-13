@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Registration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <form (ngSubmit)="register()" [formGroup]="registrationForm">
+    <ion-list>
+      <ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <div ngxErrors="email" #emailErrors="ngxErrors">
+        <div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Enter valid email</div>
+      </div>
+      <ion-item [ngClass]="{ invalid: semesterErrors.hasError('*', ['touched']) }">
+        <ion-input type="text" placeholder="Semester" formControlName="semester"></ion-input>
+      </ion-item>
+      <div ngxErrors="semester" #semesterErrors="ngxErrors">
+        <div [ngxError]="['required']" [when]="['touched', 'dirty']">Enter valid semester</div>
+      </div>
+      
+      <ion-item [ngClass]="{ invalid: departmentErrors.hasError('*', ['touched']) }">
+        <ion-input type="text" placeholder="Department" formControlName="department"></ion-input>
+      </ion-item>
+      <div ngxErrors="department" #departmentErrors="ngxErrors">
+        <div [ngxError]="['required']" [when]="['touched']">Enter valid department</div>
+      </div>
+      <ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <div ngxErrors="password" #passwordErrors="ngxErrors">
+        <div [ngxError]="['minlength', 'required']" [when]="['touched']">Password should have at least 5 characters</div>
+      </div>
+    </ion-list>
+    <div class="form-error">{{ registrationError }}</div>
+    <button ion-button full type="submit" [disabled]="!registrationForm.valid">Register</button>
+  </form> -->
+
+  <form (ngSubmit)="register()" [formGroup]="registrationForm">
+    <ion-list>
+      <ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
+        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      
+      <ion-item [ngClass]="{ invalid: semesterErrors.hasError('*', ['touched']) }">
+        <ion-input type="text" placeholder="Semester" formControlName="semester"></ion-input>
+      </ion-item>
+      
+      
+      <ion-item [ngClass]="{ invalid: departmentErrors.hasError('*', ['touched']) }">
+        <ion-input type="text" placeholder="Department" formControlName="department"></ion-input>
+      </ion-item>
+      
+      <ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <div class="form-error">{{ registrationError }}</div>
+    <button ion-button full type="submit" [disabled]="!registrationForm.valid">Register</button>
+  </form>
+  <button (click)="goToLogin()" ion-button clear>Login</button>
+</ion-content>

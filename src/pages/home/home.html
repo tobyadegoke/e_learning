@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--<h5>{{ email }}</h5>-->
+  <ion-slides autoplay="5000" loop="true" speed="500" pager="true">
+    <ion-slide class="slideOne">
+      <h1 class="slideText">Online learning <br>environment</h1>
+    </ion-slide>
+    <ion-slide class="slideTwo">
+      <h1 class="slideText">Studying materials</h1>
+    </ion-slide>
+    <ion-slide class="slideThree">
+      <h1 class="slideText">Interactive pop quiz</h1>
+    </ion-slide>
+  </ion-slides><!-- End of slide -->
+  <div style="background-color: #484848; color: white; padding: 15px 20px;">MY APP</div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-xs-6>
+        <ion-card (click)="goToProfile()" class="card profileCard">
+          <ion-icon name="person" class="icon"></ion-icon><br>
+          Profile
+        </ion-card>
+      </ion-col>
+      <ion-col col-xs-6>
+        <ion-card (click)="goToNotifications()" class="card infoCard">
+          <ion-icon name="alert" class="icon"></ion-icon><br>
+          Notifications
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-xs-6>
+        <ion-card (click)="goToCourses()" class="card coursesCard">
+          <ion-icon name="list-box" class="icon"></ion-icon><br>
+          Courses
+        </ion-card>
+      </ion-col>
+      <ion-col col-xs-6>
+        <ion-card class="card notesCard">
+          <ion-icon name="document"  class="icon"></ion-icon><br>
+          Notes
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-xs-6>
+        <ion-card (click)="goToVideos()" class="card videosCard">
+          <ion-icon name="film" class="icon"></ion-icon><br>
+          Videos
+        </ion-card>
+      </ion-col>
+      <ion-col col-xs-6>
+        <ion-card class="card quizCard">
+          <ion-icon name="paper" class="icon"></ion-icon><br>
+          Pop quiz
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-xs-6>
+        <ion-card (click)="goToForum()" class="card forumCard">
+          <ion-icon name="chatboxes" class="icon"></ion-icon><br>
+          Forum
+        </ion-card>
+      </ion-col>
+      <ion-col col-xs-6>
+        <ion-card (click)="logout()" class="card logoutCard">
+          <ion-icon name="exit" class="icon"></ion-icon><br>
+          Logout
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

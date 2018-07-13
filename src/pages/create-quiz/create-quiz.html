@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Create Quiz</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="createQuiz()" [formGroup]="createQuizForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Course</ion-label>
+        <ion-select formControlName="courseCode">
+          <ion-option *ngFor="let course of courses" value="{{ course.code }}">{{ course.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Questions</ion-label>
+        <ion-textarea formControlName="questions"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Correct answers</ion-label>
+        <ion-textarea formControlName="correctAnswers"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button ion-button type="submit">Create quiz</button>
+  </form>
+</ion-content>

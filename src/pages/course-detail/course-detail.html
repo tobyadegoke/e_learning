@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ courseCode }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngFor="let course of courseDetail">
+    <small>Name</small><br>
+    {{ course.name }}<br>
+    <small>Code</small><br>
+    {{ course.code }}<br>
+    <small>Credit</small><br>
+    {{ course.credit }}<br>
+    <small>Lecturer email</small><br>
+    {{ course.lecturer_email }}<br>
+  </div>
+</ion-content>

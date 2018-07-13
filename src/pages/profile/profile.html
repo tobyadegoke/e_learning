@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-xs-12>
+        <ion-card class="card profileCards" style="margin-bottom: 35px;">
+          <div style="text-align: center;">
+            <ion-icon name="person" class="icon" style="font-size: 120px; color: mediumseagreen; margin-bottom: 15px;"></ion-icon><br>
+            <h4 style="color: mediumseagreen">{{ userProfile?.email }}</h4>
+          </div>
+          <small style="color: grey">First name</small><br>
+          <h3 *ngIf="userProfile?.first_name">{{ userProfile?.first_name }}</h3>
+          <h3 *ngIf="!userProfile?.first_name">Enter first name</h3>
+          <hr>
+          <small style="color: grey">Middle name</small><br>
+          <h3 *ngIf="userProfile?.middle_name">{{ userProfile?.middle_name }}</h3>
+          <h3 *ngIf="!userProfile?.middle_name">Enter middle name</h3>
+          <hr>
+          <small style="color: grey">Last name</small><br>
+          <h3 *ngIf="userProfile?.last_name">{{ userProfile?.last_name }}</h3>
+          <h3 *ngIf="!userProfile?.last_name">Enter last name</h3>
+          <hr>
+          <small style="color: grey">Department</small><br>
+          <h3 *ngIf="userProfile?.department">{{ userProfile?.department }}</h3>
+          <h3 *ngIf="!userProfile?.department">Enter department</h3>
+          <hr>
+          <small style="color: grey">Semester</small><br>
+          <h3 *ngIf="userProfile?.semester">{{ userProfile?.semester }}</h3>
+          <h3 *ngIf="!userProfile?.semester">Enter semester</h3>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab right bottom>
+    <button (click)="goToEditProfile()" ion-fab mini><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
+</ion-content>
