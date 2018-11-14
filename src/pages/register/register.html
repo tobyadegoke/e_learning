@@ -22,7 +22,7 @@
       <small
         style="color: red"
         *ngIf="registerForm.controls['email'].hasError('required')"
-        >Email is required.</small
+        >* Email field is required</small
       >
       <small
         style="color: red"
@@ -30,7 +30,7 @@
           registerForm.controls['email'].value &&
           registerForm.controls['email'].hasError('email')
         "
-        >Email is invalid.</small
+        >* Email is not valid.</small
       >
     </div>
 
@@ -46,7 +46,7 @@
       <small
         style="color: red"
         *ngIf="registerForm.controls['password'].hasError('required')"
-        >Password is required</small
+        >* Password field is empty</small
       >
       <small
         style="color: red"
@@ -54,7 +54,7 @@
           registerForm.controls['password'].value &&
           registerForm.controls['password'].hasError('minlength')
         "
-        >Password must be at least 6 characters.</small
+        >* Password must be at least 6 characters.</small
       >
     </div>
 
@@ -71,7 +71,7 @@
         style="color: red"
         *ngIf="registerForm.controls['confirmPassword'].hasError('required')"
       >
-        Confirm Password is required.
+        * Confirm Password field is empty.
       </small>
       <small
         style="color: red"
@@ -79,7 +79,7 @@
           registerForm.controls['confirmPassword'].hasError('matchPassword')
         "
       >
-        Password and Confirm Password must match.
+        * Passwords do not match
       </small>
     </div>
 
@@ -94,7 +94,7 @@
             round
             outline
           >
-            Register
+            Create Account
           </button>
         </ion-col>
       </ion-row>

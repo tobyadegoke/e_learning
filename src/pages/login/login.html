@@ -22,7 +22,7 @@
       <small
         style="color: red"
         *ngIf="loginForm.controls['email'].hasError('required')"
-        >Email is required.</small
+        >Email field is empty</small
       >
       <small
         style="color: red"
@@ -30,7 +30,7 @@
           loginForm.controls['email'].value &&
           loginForm.controls['email'].hasError('email')
         "
-        >Email is invalid.</small
+        >Email is not valid.</small
       >
     </div>
 
@@ -46,7 +46,7 @@
       <small
         style="color: red"
         *ngIf="loginForm.controls['password'].hasError('required')"
-        >Password is required</small
+        >Password field is empty</small
       >
     </div>
 
@@ -54,7 +54,7 @@
       <ion-row>
         <ion-col text-center>
           <button ion-button color="danger" style="width: 150px" round outline>
-            Login
+            Log In
           </button>
         </ion-col>
       </ion-row>
