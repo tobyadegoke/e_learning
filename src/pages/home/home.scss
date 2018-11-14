@@ -1,84 +1,49 @@
 page-home {
-
-}
-
-ion-slides{
-    height: 50%;
-}
-
-.slideOne{
-    background: url("http://localhost:82/myapp/public/images/slideOne.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.slideTwo{
-    background: url("http://localhost:82/myapp/public/images/slideTwo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.slideThree{
-    background: url("http://localhost:82/myapp/public/images/slideThree.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.slideText{
+  .slideText {
     color: white;
     text-shadow: 0 0 5px #484848;
     font-weight: bold;
     font-size: 30px;
-}
+  }
 
-ion-row{
-    margin-bottom: 15px;
-}
-
-ion-col{
-    text-align: center;
-}
-
-.card{
+  .card {
     padding: 15px;
     cursor: pointer;
-}
+  }
 
-.icon{
+  .icon {
     font-size: 40px;
-}
+  }
 
-.profileCard{
+  .profileCard {
     color: mediumseagreen;
-}
+  }
 
-.infoCard{
+  .infoCard {
     color: orangered;
-}
+  }
 
-.coursesCard{
+  .coursesCard {
     color: rgb(187, 101, 155);
-}
+  }
 
-.notesCard{
+  .notesCard {
     color: rgb(192, 164, 4);
-}
+  }
 
-.videosCard{
+  .videosCard {
     color: rgb(89, 89, 168);
-}
+  }
 
-.quizCard{
+  .quizCard {
     color: indianred;
-}
+  }
 
-.forumCard{
+  .forumCard {
     color: rgb(92, 201, 205);
-}
+  }
 
-.logoutCard{
+  .logoutCard {
     color: rgba(253, 13, 13, 0.808);
+  }
 }

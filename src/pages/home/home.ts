@@ -17,19 +17,19 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.auth.getUserProfile(this.email).subscribe(resp => {
-      console.log(resp[0]);
-      this.userProfile = resp[0];
-      localStorage.setItem('myAppUser', JSON.stringify(this.userProfile));
-    });
+    // this.auth.getUserProfile(this.email).subscribe(resp => {
+    //   console.log(resp[0]);
+    //   this.userProfile = resp[0];
+    //   localStorage.setItem('myAppUser', JSON.stringify(this.userProfile));
+    // });
   }
 
   goToProfile() {
     this.navCtrl.push('ProfilePage');
   }
 
-  goToNotifications() {
-    this.navCtrl.push('NotificationsPage');
+  goToMessages() {
+    this.navCtrl.push('MessagesPage');
   }
 
   goToCourses() {
@@ -40,8 +40,16 @@ export class HomePage {
     this.navCtrl.push('ForumPage');
   }
 
-  goToVideos() {
-    this.navCtrl.push('VideosPage');
+  goToMedia() {
+    this.navCtrl.push('MediaPage');
+  }
+
+  goToNotes() {
+    this.navCtrl.push('NotesPage');
+  }
+
+  goToQuiz() {
+    this.navCtrl.push('QuizPage');
   }
 
   logout() {

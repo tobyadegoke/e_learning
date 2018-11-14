@@ -1,0 +1,34 @@
+<!--
+  Generated template for the IntroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content>
+  <ion-slides pager>
+    <ion-slide
+      style="background-image: url(../assets/imgs/intro1.jpg); background-size: cover"
+    >
+      <div class="logo" text-center>
+        <img alt="panda-logo" src="../assets/imgs/panda white.png" />
+      </div>
+    </ion-slide>
+
+    <ion-slide
+      style="background-image: url(../assets/imgs/intro2.jpg); background-size: cover"
+    >
+      <h2 class="intro">Improving class interactions.</h2>
+    </ion-slide>
+
+    <ion-slide
+      style="background-image: url(../assets/imgs/intro3.jpg); background-size: cover"
+    >
+      <h2 class="intro">Ready to get started?</h2>
+      <button ion-button color="danger" (click)="toLoginPage()">Log In</button>
+      <button ion-button color="danger" (click)="toRegisterPage()">
+        Register
+      </button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
