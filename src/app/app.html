@@ -1,1 +1,18 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-content padding>
+    <ion-list
+      ><ion-item><ion-icon name="home"> Home</ion-icon> </ion-item>
+      <ion-item><ion-icon name="mail"> Messages</ion-icon> </ion-item>
+      <ion-item><ion-icon name="play"> Media</ion-icon> </ion-item>
+      <ion-item><ion-icon name="cube"> Quiz</ion-icon> </ion-item>
+      <ion-item><ion-icon name="chatbubbles"> Forum</ion-icon> </ion-item>
+      <ion-item><ion-icon name="paper"> Notes</ion-icon> </ion-item>
+      <ion-item><ion-icon name="contact"> Account</ion-icon> </ion-item>
+      <ion-item
+        ><ion-icon name="arrow-dropleft-circle"> Log Out</ion-icon></ion-item
+      >
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>
