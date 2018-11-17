@@ -53,7 +53,14 @@
     <ion-grid>
       <ion-row>
         <ion-col text-center>
-          <button ion-button color="danger" style="width: 150px" round outline>
+          <button
+            ion-button
+            color="danger"
+            [disabled]="loginForm.invalid"
+            style="width: 150px"
+            round
+            outline
+          >
             Log In
           </button>
         </ion-col>
