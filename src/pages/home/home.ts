@@ -24,16 +24,8 @@ export class HomePage {
     // });
   }
 
-  goToProfile() {
-    this.navCtrl.push('ProfilePage');
-  }
-
   goToMessages() {
     this.navCtrl.push('MessagesPage');
-  }
-
-  goToCourses() {
-    this.navCtrl.push('CoursesPage');
   }
 
   goToForum() {
