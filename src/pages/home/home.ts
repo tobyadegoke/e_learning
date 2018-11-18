@@ -10,7 +10,10 @@ export class HomePage {
   email: string;
   userProfile;
 
-  constructor(public navCtrl: NavController, public auth: AuthServiceProvider) {
+  constructor(
+    public navCtrl: NavController,
+    private authServiceProvider: AuthServiceProvider
+  ) {
     this.email = localStorage.getItem('myappEmail');
     console.log('This is constructor...');
   }
@@ -45,7 +48,8 @@ export class HomePage {
   }
 
   logout() {
-    localStorage.removeItem('myappEmail');
-    this.navCtrl.setRoot('LoginPage');
+    this.authServiceProvider.logout().then(() => {
+      this.navCtrl.setRoot('IntroPage');
+    });
   }
 }

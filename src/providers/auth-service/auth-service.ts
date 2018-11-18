@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthServiceProvider {
@@ -24,5 +25,13 @@ export class AuthServiceProvider {
       credentials.email,
       credentials.password
     );
+  }
+
+  isLoggedIn() {
+    return this.afAuth.authState.pipe(first());
+  }
+
+  logout() {
+    return this.afAuth.auth.signOut();
   }
 }
