@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../../Validators/password.validation';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { ProfileProvider } from '../../providers/profile/profile';
+
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,7 +24,8 @@ export class RegisterPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private authServiceProvider: AuthServiceProvider
+    private authServiceProvider: AuthServiceProvider,
+    private profileProvider: ProfileProvider
   ) {
     this.createRegisterForm();
   }
@@ -34,6 +37,7 @@ export class RegisterPage {
   onRegisterSubmit() {
     this.authServiceProvider.register(this.registerForm.value).then(res => {
       console.log('onRegisterSubmit successful', res);
+      this.profileProvider.initProfile();
     });
   }
 

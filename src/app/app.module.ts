@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { MessagesProvider } from '../providers/messages/messages';
+import { ProfileProvider } from '../providers/profile/profile';
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -38,7 +40,9 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     SplashScreen,
     UserProvider,
     AuthServiceProvider,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-  ],
+    MessagesProvider,
+    ProfileProvider,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
+  ]
 })
 export class AppModule {}

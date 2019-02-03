@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthServiceProvider {
-  user: firebase.User;
+  user: any;
 
   constructor(public http: HttpClient, public afAuth: AngularFireAuth) {
     afAuth.authState.subscribe(user => {
