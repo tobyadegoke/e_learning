@@ -12,45 +12,41 @@ import { Profile } from './profile.model';
 @Injectable()
 export class ProfileProvider {
   profileEndpoint = 'profiles';
-  
-  constructor(
-    public fs: AngularFirestore, 
-   public afAuth: AngularFireAuth
-    ) { }
 
-  getList(){
+  constructor(public fs: AngularFirestore, public afAuth: AngularFireAuth) {}
+
+  getList() {
     return this.fs.collection(this.profileEndpoint).snapshotChanges();
   }
 
-  getById(id:string){
-    this.fs.doc(`${this.profileEndpoint}/${id}`)
+  getById(id: string) {
+    this.fs.doc(`${this.profileEndpoint}/${id}`);
   }
 
-  delete(id:string){
+  delete(id: string) {
     this.fs.doc(`${this.profileEndpoint}/${id}`).delete();
   }
 
-  update(id:string, data:any){
+  update(id: string, data: any) {
     delete data.id;
     this.fs.doc(`${this.profileEndpoint}/${id}`).update(data);
   }
 
-  create(data: Profile){
-    const dat = {...data};
+  create(data: Profile) {
+    const dat = { ...data };
     return this.fs.collection(this.profileEndpoint).add(dat);
   }
 
-  initProfile(): any {
-    let user = this.getCurrentUser(); 
-    const profile = new Profile(user);
+  createProfile(user: any) {
+    let profile = new Profile();
     profile.userId = user.uid;
-    this.create(profile);
+    profile.email = user.email;
+    profile = <any>{ ...profile };
+    return this.fs.doc(`profileList/${user.uid}`).set(profile);
   }
 
-  getCurrentUser(){
+  getCurrentUser() {
     const currentUser = this.afAuth.auth.currentUser;
-    return currentUser ? currentUser : {uid: "", email: ""} ;
+    return currentUser ? currentUser : { uid: '', email: '' };
   }
 }
-
-
