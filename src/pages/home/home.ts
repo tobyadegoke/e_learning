@@ -31,6 +31,10 @@ export class HomePage {
     this.navCtrl.push('MessagesPage');
   }
 
+  goToAccount() {
+    this.navCtrl.push('AccountPage');
+  }
+
   goToForum() {
     this.navCtrl.push('ForumPage');
   }
