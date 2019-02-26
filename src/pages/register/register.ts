@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../../Validators/password.validation';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { ProfileProvider } from '../../providers/profile/profile';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the RegisterPage page.
@@ -14,7 +16,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 @IonicPage()
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html',
+  templateUrl: 'register.html'
 })
 export class RegisterPage {
   registerForm: FormGroup;
@@ -33,22 +35,17 @@ export class RegisterPage {
 
   onRegisterSubmit() {
     this.authServiceProvider.register(this.registerForm.value).then(res => {
-      console.log('onRegisterSubmit successful', res);
+      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.push('AccountPage');
     });
   }
 
   createRegisterForm() {
     this.registerForm = this.formBuilder.group(
       {
-        email: [
-          '',
-          Validators.compose([Validators.required, Validators.email]),
-        ],
-        password: [
-          '',
-          Validators.compose([Validators.required, Validators.minLength(6)]),
-        ],
-        confirmPassword: ['', Validators.required],
+        email: ['', Validators.compose([Validators.required, Validators.email])],
+        password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+        confirmPassword: ['', Validators.required]
       },
       { validator: PasswordValidation.matchPassword }
     );
