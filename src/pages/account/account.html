@@ -13,30 +13,55 @@
 </ion-header>
 
 
-<ion-content padding>
-<ion-card>
-  <ion-card-header>
+<ion-content>
 
-    <ion-card-title>Account</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
     <ion-item>
-      <ion-label>Name</ion-label>
+      <ion-label>First Name</ion-label>
       <ion-input></ion-input>
     </ion-item>
     <ion-item>
+        <ion-label>Last Name</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    <ion-item>
       <ion-label>Department</ion-label>
-      <ion-input></ion-input>
+      <ion-select>
+        <ion-option>Computer Engineering</ion-option>
+        <ion-option>Biomedical Engineering</ion-option>
+        <ion-option>Computer Science</ion-option>
+        <ion-option>Electronic and Communication Engineering</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Semester</ion-label>
-      <ion-input></ion-input>
+      <ion-select color="danger">
+          <ion-option>1</ion-option>
+          <ion-option>2</ion-option>
+          <ion-option>3</ion-option>
+          <ion-option>4</ion-option>
+        </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label>User Type</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-  </ion-card-content>
-</ion-card>
+    
+      
+    <ion-list radio-group>
+        <ion-list-header>
+          User Type
+        </ion-list-header>
+      
+        <ion-item >
+          <ion-label>Student</ion-label>
+          <ion-radio color="danger" checked="true" value="go"></ion-radio>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Lecturer</ion-label>
+          <ion-radio color="danger"value="rust"></ion-radio>
+        </ion-item>
+      </ion-list>
+    
+      <ion-row>
+      <ion-col text-center>
+      <button ion-button color="danger" style="width: 150px" round outline>Save</button>
+      </ion-col>
+    </ion-row>
 </ion-content>
