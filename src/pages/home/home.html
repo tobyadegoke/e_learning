@@ -12,6 +12,30 @@
 
 <ion-content>
   
+    <ion-slides pager="true" paginationType="progress" class="slide" autoplay="3000" loop="true" effect="fade">
+        <ion-slide
+          style="background-image: url(../assets/imgs/home1.jpg); background-size: cover"
+        >
+          <div class="logo" text-center>
+            <img alt="panda-logo" src="../assets/imgs/panda white.png" />
+          </div>
+        </ion-slide>
+    
+        <ion-slide
+          style="background-image: url(../assets/imgs/home2.jpg); background-size: cover"
+        >
+          <h2 class="intro">The Perfect Student Companion</h2>
+        </ion-slide>
+    
+        <ion-slide
+          style="background-image: url(../assets/imgs/home3.jpg); background-size: cover"
+        >
+          <h2 class="intro">Classroom At Your Fingertips</h2>
+          
+
+        </ion-slide>
+      </ion-slides>
+
   <ion-grid>
     <ion-row>
       <ion-col col-xs-6 text-center>
@@ -23,26 +47,28 @@
     </ion-row>
     <ion-row>
       <ion-col col-xs-6 text-center>
-        <ion-card (click)="goToNotes()" class="card notesCard">
-          <ion-icon name="document" class="icon"></ion-icon><br />
-          Notes
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-xs-6 text-center>
         <ion-card (click)="goToMedia()" class="card videosCard">
           <ion-icon name="film" class="icon"></ion-icon><br />
           Media
         </ion-card>
       </ion-col>
-      <ion-col col-xs-6 text-center>
-        <ion-card (click)="goToQuiz()" class="card quizCard">
-          <ion-icon name="paper" class="icon"></ion-icon><br />
-          Quiz
-        </ion-card>
-      </ion-col>
     </ion-row>
+    <ion-row>
+        <ion-col col-xs-6 text-center>
+            <ion-card (click)="goToQuiz()" class="card quizCard">
+              <ion-icon name="paper" class="icon"></ion-icon><br />
+              Quiz
+            </ion-card>
+          </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-xs-6 text-center>
+          <ion-card (click)="goToNotes()" class="card notesCard">
+            <ion-icon name="document" class="icon"></ion-icon><br />
+            Notes
+          </ion-card>
+        </ion-col>
+      </ion-row>
     <ion-row>
       <ion-col col-xs-6 text-center>
         <ion-card (click)="goToForum()" class="card forumCard">
@@ -50,12 +76,14 @@
           Forum
         </ion-card>
       </ion-col>
-      <ion-col col-xs-6 text-center>
-        <ion-card (click)="logout()" class="card logoutCard">
-          <ion-icon name="exit" class="icon"></ion-icon><br />
-          Logout
-        </ion-card>
-      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-xs-6 text-center>
+            <ion-card (click)="logout()" class="card logoutCard">
+              <ion-icon name="exit" class="icon"></ion-icon><br />
+              Logout
+            </ion-card>
+          </ion-col>
     </ion-row>
   </ion-grid>
   

@@ -22,4 +22,8 @@ export class NotesPage {
     console.log('ionViewDidLoad NotesPage');
   }
 
+  goToNotesadd() {
+    this.navCtrl.push('NotesaddPage');
+  }
+
 }

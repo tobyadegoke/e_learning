@@ -7,12 +7,43 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>notes</ion-title>
+    <ion-title>Notes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="danger">
+        <ion-icon name="clipboard"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item>
+        <h2>Note 1</h2>
+        <p>I've had a pretty messed up day. If we just...</p>
+    </ion-item>
+    <ion-item>
+        <h2>Note 2</h2>
+        
+        <p>I've had a pretty messed up day. If we just...</p>
+    </ion-item>
+    <ion-item>
+        <h2>Note 3</h2>
+        
+        <p>I've had a pretty messed up day. If we just...</p>
+    </ion-item>
+    <ion-item>
+        <h2>Note 4</h2>
+        
+        <p>I've had a pretty messed up day. If we just...</p>
+    </ion-item>
+  </ion-list>
 
+  <ion-fab right bottom (click)="goToNotesadd()">
+    <button ion-fab color="danger">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
