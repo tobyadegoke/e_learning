@@ -79,6 +79,14 @@
     </ion-row>
     <ion-row>
         <ion-col col-xs-6 text-center>
+          <ion-card (click)="goToAccount()" class="card forumCard">
+            <ion-icon name="settoings" class="icon"></ion-icon><br />
+            Account
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    <ion-row>
+        <ion-col col-xs-6 text-center>
             <ion-card (click)="logout()" class="card logoutCard">
               <ion-icon name="exit" class="icon"></ion-icon><br />
               Logout
@@ -87,6 +95,6 @@
     </ion-row>
   </ion-grid>
   
-<button ion-button (click)="goToAccount()">Account</button>
+<button ion-button (click)="goToForumdetail()">Forum Detail</button>
 
 </ion-content>

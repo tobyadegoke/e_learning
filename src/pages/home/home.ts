@@ -51,6 +51,10 @@ export class HomePage {
     this.navCtrl.push('QuizPage');
   }
 
+  goToForumdetail() {
+    this.navCtrl.push('ForumdetailPage');
+  }
+
   logout() {
     this.authServiceProvider.logout().then(() => {
       this.navCtrl.setRoot('IntroPage');
