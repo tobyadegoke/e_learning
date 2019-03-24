@@ -5,7 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="danger"> <ion-title>Register</ion-title> </ion-navbar>
+  <ion-navbar color="danger">
+    <ion-title>Register</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -19,66 +21,38 @@
       <ion-input formControlName="email" name="email"></ion-input>
     </ion-item>
     <div *ngIf="registerForm.controls['email'].touched">
-      <small
-        style="color: red"
-        *ngIf="registerForm.controls['email'].hasError('required')"
-        >* Email field is required</small
-      >
-      <small
-        style="color: red"
-        *ngIf="
+      <small style="color: red" *ngIf="registerForm.controls['email'].hasError('required')">* Email field is
+        required</small>
+      <small style="color: red" *ngIf="
           registerForm.controls['email'].value &&
           registerForm.controls['email'].hasError('email')
-        "
-        >* Email is not valid.</small
-      >
+        ">* Email is not valid.</small>
     </div>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input
-        formControlName="password"
-        name="password"
-        type="password"
-      ></ion-input>
+      <ion-input formControlName="password" name="password" type="password"></ion-input>
     </ion-item>
     <div *ngIf="registerForm.controls['password'].touched">
-      <small
-        style="color: red"
-        *ngIf="registerForm.controls['password'].hasError('required')"
-        >* Password field is empty</small
-      >
-      <small
-        style="color: red"
-        *ngIf="
+      <small style="color: red" *ngIf="registerForm.controls['password'].hasError('required')">* Password field is
+        empty</small>
+      <small style="color: red" *ngIf="
           registerForm.controls['password'].value &&
           registerForm.controls['password'].hasError('minlength')
-        "
-        >* Password must be at least 6 characters.</small
-      >
+        ">* Password must be at least 6 characters.</small>
     </div>
 
     <ion-item>
       <ion-label floating>Confirm Password</ion-label>
-      <ion-input
-        formControlName="confirmPassword"
-        name="confirmPassword"
-        type="password"
-      ></ion-input>
+      <ion-input formControlName="confirmPassword" name="confirmPassword" type="password"></ion-input>
     </ion-item>
     <div *ngIf="registerForm.controls['confirmPassword'].touched">
-      <small
-        style="color: red"
-        *ngIf="registerForm.controls['confirmPassword'].hasError('required')"
-      >
+      <small style="color: red" *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
         * Confirm Password field is empty.
       </small>
-      <small
-        style="color: red"
-        *ngIf="
+      <small style="color: red" *ngIf="
           registerForm.controls['confirmPassword'].hasError('matchPassword')
-        "
-      >
+        ">
         * Passwords do not match
       </small>
     </div>
@@ -86,14 +60,7 @@
     <ion-grid>
       <ion-row>
         <ion-col text-center>
-          <button
-            ion-button
-            color="danger"
-            [disabled]="registerForm.invalid"
-            style="width: 150px"
-            round
-            outline
-          >
+          <button ion-button color="danger" [disabled]="registerForm.invalid" style="width: 150px" round outline>
             Create Account
           </button>
         </ion-col>

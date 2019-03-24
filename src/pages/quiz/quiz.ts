@@ -22,4 +22,8 @@ export class QuizPage {
     console.log('ionViewDidLoad QuizPage');
   }
 
+  goToQuizstart() {
+    this.navCtrl.push('QuizstartPage');
+  }
+
 }
