@@ -25,4 +25,8 @@ export class ForumPage {
   goToForumadd() {
     this.navCtrl.push('ForumaddPage');
   }
+
+  goToForumdetail() {
+    this.navCtrl.push('ForumdetailPage');
+  }
 }
