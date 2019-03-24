@@ -26,4 +26,8 @@ export class NotesPage {
     this.navCtrl.push('NotesaddPage');
   }
 
+  goToNotesdetail(){
+    this.navCtrl.push('NotesdetailPage')
+  }
+
 }
