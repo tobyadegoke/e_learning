@@ -18,7 +18,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MessagesProvider } from '../providers/messages/messages';
-import { ProfileProvider } from '../providers/profile/profile';
+import { UserProfileProvider } from '../providers/profile/profile';
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -30,7 +30,7 @@ import { ProfileProvider } from '../providers/profile/profile';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireAuthModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
@@ -41,7 +41,7 @@ import { ProfileProvider } from '../providers/profile/profile';
     UserProvider,
     AuthServiceProvider,
     MessagesProvider,
-    ProfileProvider,
+    UserProfileProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../../Validators/password.validation';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { ProfileProvider } from '../../providers/profile/profile';
+import { UserProfileProvider } from '../../providers/profile/profile';
 import { HomePage } from '../home/home';
 
 /**

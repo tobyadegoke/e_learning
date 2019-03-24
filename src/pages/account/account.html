@@ -5,27 +5,32 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Account</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
-
+  <form [formGroup]="accountForm" (ng-submit)="submit()">
     <ion-item>
-      <ion-label>First Name</ion-label>
-      <ion-input></ion-input>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email" readonly></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Last Name</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+      <ion-label>First Name</ion-label>
+      <ion-input formControlName="firstname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last Name</ion-label>
+      <ion-input formControlName="lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Display Name</ion-label>
+      <ion-input formControlName="displayname"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label>Department</ion-label>
-      <ion-select>
+      <ion-select formControlName="department">
         <ion-option>Computer Engineering</ion-option>
         <ion-option>Biomedical Engineering</ion-option>
         <ion-option>Computer Science</ion-option>
@@ -34,34 +39,34 @@
     </ion-item>
     <ion-item>
       <ion-label>Semester</ion-label>
-      <ion-select color="danger">
-          <ion-option>1</ion-option>
-          <ion-option>2</ion-option>
-          <ion-option>3</ion-option>
-          <ion-option>4</ion-option>
-        </ion-select>
+      <ion-select color="danger" formControlName="semester">
+        <ion-option>1</ion-option>
+        <ion-option>2</ion-option>
+        <ion-option>3</ion-option>
+        <ion-option>4</ion-option>
+      </ion-select>
     </ion-item>
-    
-      
-    <ion-list radio-group>
-        <ion-list-header>
-          User Type
-        </ion-list-header>
-      
-        <ion-item >
-          <ion-label>Student</ion-label>
-          <ion-radio color="danger" checked="true" value="go"></ion-radio>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label>Lecturer</ion-label>
-          <ion-radio color="danger"value="rust"></ion-radio>
-        </ion-item>
-      </ion-list>
-    
-      <ion-row>
+    <ion-item>
+      <ion-label> User Type</ion-label>
+      <ion-select color="danger" formControlName="userType">
+        <ion-option>Student</ion-option>
+        <ion-option>Lecturer</ion-option>
+      </ion-select>
+    </ion-item>
+    <div *ngIf="accountForm.value.userType === 'Lecturer'">
+      <ion-item>
+        <ion-label>Lecturer Pin</ion-label>
+        <ion-input formControlName="pin"></ion-input>
+      </ion-item>
+      <small *ngIf="pinErrMsg" [style.color]="'orangered'" [style.padding.px]="10">{{ pinErrMsg }}</small>
+    </div>
+    <ion-row>
       <ion-col text-center>
-      <button ion-button color="danger" style="width: 150px" round outline>Save</button>
+        <button (click)="submit()" [disabled]="accountForm.invalid" ion-button color="danger" style="width: 150px" round outline>
+          Save
+        </button>
       </ion-col>
     </ion-row>
+  </form>
+  {{ accountForm.value | json }}
 </ion-content>

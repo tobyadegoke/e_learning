@@ -3,17 +3,18 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { first } from 'rxjs/operators';
 import { AlertController } from 'ionic-angular';
-import { ProfileProvider } from '../profile/profile';
+import { UserProfileProvider } from '../profile/profile';
 
 @Injectable()
 export class AuthServiceProvider {
   user: any;
 
-  constructor(public http: HttpClient, public afAuth: AngularFireAuth, private alertCtrl: AlertController, private profileProvider: ProfileProvider) {
-    afAuth.authState.subscribe(user => {
-      this.user = user;
-    });
-  }
+  constructor(
+    public http: HttpClient,
+    public afAuth: AngularFireAuth,
+    private alertCtrl: AlertController,
+    private profileProvider: UserProfileProvider
+  ) {}
 
   isLoggedIn() {
     return this.afAuth.authState.pipe(first());
@@ -22,12 +23,13 @@ export class AuthServiceProvider {
   login(loginCreds: { email: string; password: string }) {
     const promise = this.afAuth.auth.signInWithEmailAndPassword(loginCreds.email, loginCreds.password);
     this.handlePromise(promise);
+
     return promise;
   }
 
   register(registerCreds: { email: string; password: string }) {
     const promise = this.afAuth.auth.createUserWithEmailAndPassword(registerCreds.email, registerCreds.password);
-    promise.then(_ => this.profileProvider.createProfile(_));
+    promise.then(_ => this.profileProvider.create(_));
     this.handlePromise(promise);
     return promise;
   }
@@ -50,10 +52,5 @@ export class AuthServiceProvider {
         // do something general here
       })
       .catch(err => this.alertCtrl.create({ title: 'Info!', message: err.message, buttons: ['Ok'] }));
-  }
-
-  getCurrentUser() {
-    const currentUser = this.afAuth.auth.currentUser;
-    return currentUser ? currentUser : { uid: '', email: '' };
   }
 }

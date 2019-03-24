@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RegisterPage } from './register';
-import { ProfileProvider } from '../../providers/profile/profile';
+import { UserProfileProvider } from '../../providers/profile/profile';
 
 @NgModule({
-  declarations: [
-    RegisterPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(RegisterPage),
-  ],providers:[ProfileProvider]
+  declarations: [RegisterPage],
+  imports: [IonicPageModule.forChild(RegisterPage)],
+  providers: [UserProfileProvider]
 })
 export class RegisterPageModule {}

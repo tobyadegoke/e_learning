@@ -9,6 +9,8 @@ export class Profile {
   firstname: string;
   avatar: string;
   lastname: any;
+  profileCompleted: boolean;
+  userType: string;
   constructor(data?: any) {
     data = data || {};
     this.avatar = data.avatar || '';
@@ -20,5 +22,7 @@ export class Profile {
     this.department = data.department || '';
     this.semester = data.semester || '';
     this.userId = data.userId || '';
+    this.profileCompleted = data.profileCompleted || false;
+    this.userType = data.userType || 'Student';
   }
 }

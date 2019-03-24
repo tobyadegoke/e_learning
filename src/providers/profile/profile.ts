@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from './profile.model';
+import { take, tap, map } from 'rxjs/operators';
 
 /*
   Generated class for the ProfileProvider provider.
@@ -10,43 +11,44 @@ import { Profile } from './profile.model';
   and Angular DI.
 */
 @Injectable()
-export class ProfileProvider {
-  profileEndpoint = 'profiles';
+export class UserProfileProvider {
+  public profileEndpoint = 'profiles';
+  user: { uid: string; email: string };
 
-  constructor(public fs: AngularFirestore, public afAuth: AngularFireAuth) {}
+  constructor(public fs: AngularFirestore, public afAuth: AngularFireAuth) {
+    this.getCurrentUser();
+  }
 
   getList() {
     return this.fs.collection(this.profileEndpoint).snapshotChanges();
   }
 
-  getById(id: string) {
-    this.fs.doc(`${this.profileEndpoint}/${id}`);
+  getById() {
+    return this.fs.doc(`${this.profileEndpoint}/${this.getCurrentUser().uid}`).snapshotChanges();
   }
 
-  delete(id: string) {
-    this.fs.doc(`${this.profileEndpoint}/${id}`).delete();
+  delete() {
+    this.fs.doc(`${this.profileEndpoint}/${this.getCurrentUser().uid}`).delete();
   }
 
-  update(id: string, data: any) {
+  update(data: any) {
     delete data.id;
-    this.fs.doc(`${this.profileEndpoint}/${id}`).update(data);
+    let profile = new Profile();
+    profile.profileCompleted = true;
+    profile = <any>{ ...profile, ...data };
+    return this.fs.doc(`${this.profileEndpoint}/${this.getCurrentUser().uid}`).set(profile, { merge: true });
   }
 
-  create(data: Profile) {
-    const dat = { ...data };
-    return this.fs.collection(this.profileEndpoint).add(dat);
-  }
-
-  createProfile(user: any) {
+  create(user) {
     let profile = new Profile();
     profile.userId = user.uid;
     profile.email = user.email;
     profile = <any>{ ...profile };
-    return this.fs.doc(`profileList/${user.uid}`).set(profile);
+    localStorage.setItem('userData', JSON.stringify(user));
+    return this.fs.doc(`${this.profileEndpoint}/${user.uid}`).set(profile);
   }
 
   getCurrentUser() {
-    const currentUser = this.afAuth.auth.currentUser;
-    return currentUser ? currentUser : { uid: '', email: '' };
+    return JSON.parse(localStorage.getItem('userData')) || {};
   }
 }
