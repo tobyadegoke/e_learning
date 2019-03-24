@@ -9,10 +9,34 @@
   <ion-navbar>
     <ion-title>Quiz</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
+  <ion-card (click)="goToQuizstart()">
+    <ion-card-content>
+     <h1>Quiz 1</h1>
+    </ion-card-content>
+  </ion-card>
+  <ion-card (click)="goToQuizstart()">
+      <ion-card-content>
+       <h1>Quiz 2</h1>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToQuizstart()">
+        <ion-card-content>
+         <h1>Quiz 3</h1>
+        </ion-card-content>
+      </ion-card>
+      <ion-card (click)="goToQuizstart()">
+          <ion-card-content>
+           <h1>Quiz 4</h1>
+          </ion-card-content>
+        </ion-card>
 
+        <ion-fab right bottom>
+            <button ion-fab color="danger">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
 </ion-content>

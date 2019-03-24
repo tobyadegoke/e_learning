@@ -51,8 +51,8 @@ export class HomePage {
     this.navCtrl.push('QuizPage');
   }
 
-  goToForumdetail() {
-    this.navCtrl.push('ForumdetailPage');
+  goToQuizscore() {
+    this.navCtrl.push('QuizscorePage');
   }
 
   logout() {
