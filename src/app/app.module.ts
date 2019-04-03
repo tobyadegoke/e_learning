@@ -19,6 +19,11 @@ import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MessagesProvider } from '../providers/messages/messages';
 import { UserProfileProvider } from '../providers/profile/profile';
+import { AlertProvider } from '../providers/alert/alert';
+import { NotesProvider } from '../providers/notes/notes';
+import { ForumProvider } from '../providers/forum/forum';
+import { MeassageProvider } from '../providers/meassage/meassage';
+import { QuizProvider } from '../providers/quiz/quiz';
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -42,7 +47,12 @@ import { UserProfileProvider } from '../providers/profile/profile';
     AuthServiceProvider,
     MessagesProvider,
     UserProfileProvider,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AlertProvider,
+    NotesProvider,
+    ForumProvider,
+    MeassageProvider,
+    QuizProvider
   ]
 })
 export class AppModule {}

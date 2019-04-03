@@ -7,6 +7,7 @@ import { UserProfileProvider } from '../profile/profile';
 
 @Injectable()
 export class AuthServiceProvider {
+
   user: any;
 
   constructor(
@@ -14,7 +15,7 @@ export class AuthServiceProvider {
     public afAuth: AngularFireAuth,
     private alertCtrl: AlertController,
     private profileProvider: UserProfileProvider
-  ) {}
+  ) { }
 
   isLoggedIn() {
     return this.afAuth.authState.pipe(first());
@@ -52,5 +53,13 @@ export class AuthServiceProvider {
         // do something general here
       })
       .catch(err => this.alertCtrl.create({ title: 'Info!', message: err.message, buttons: ['Ok'] }));
+  }
+
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser')) || {};
+  }
+
+  setCurrentUser(user: any) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
   }
 }
