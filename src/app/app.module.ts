@@ -19,7 +19,15 @@ import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MessagesProvider } from '../providers/messages/messages';
 import { UserProfileProvider } from '../providers/profile/profile';
+<<<<<<< HEAD
 import { NoteServiceProvider } from '../providers/note-service/note-service';
+=======
+import { AlertProvider } from '../providers/alert/alert';
+import { NotesProvider } from '../providers/notes/notes';
+import { ForumProvider } from '../providers/forum/forum';
+import { MeassageProvider } from '../providers/meassage/meassage';
+import { QuizProvider } from '../providers/quiz/quiz';
+>>>>>>> a673b7cd661345efeeededd1fd4f2896aab190d3
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -44,7 +52,15 @@ import { NoteServiceProvider } from '../providers/note-service/note-service';
     MessagesProvider,
     UserProfileProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+<<<<<<< HEAD
     NoteServiceProvider
+=======
+    AlertProvider,
+    NotesProvider,
+    ForumProvider,
+    MeassageProvider,
+    QuizProvider
+>>>>>>> a673b7cd661345efeeededd1fd4f2896aab190d3
   ]
 })
 export class AppModule {}

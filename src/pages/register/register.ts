@@ -35,8 +35,7 @@ export class RegisterPage {
 
   onRegisterSubmit() {
     this.authServiceProvider.register(this.registerForm.value).then(res => {
-      this.navCtrl.setRoot(HomePage);
-      this.navCtrl.push('AccountPage');
+      this.navCtrl.setRoot('AccountPage');
     });
   }
 
