@@ -19,6 +19,7 @@ import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MessagesProvider } from '../providers/messages/messages';
 import { UserProfileProvider } from '../providers/profile/profile';
+import { NoteServiceProvider } from '../providers/note-service/note-service';
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -42,7 +43,8 @@ import { UserProfileProvider } from '../providers/profile/profile';
     AuthServiceProvider,
     MessagesProvider,
     UserProfileProvider,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    NoteServiceProvider
   ]
 })
 export class AppModule {}
