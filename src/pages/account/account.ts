@@ -3,13 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Profile } from '../../providers/profile/profile.model';
 import { UserProfileProvider } from '../../providers/profile/profile';
-
-/**
- * Generated class for the AccountPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AlertProvider } from '../../providers/alert/alert';
 
 @IonicPage()
 @Component({
@@ -25,18 +19,24 @@ export class AccountPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private fb: FormBuilder,
-    private profileProvider: UserProfileProvider
+    private profileProvider: UserProfileProvider,
+    private alertProvider: AlertProvider
   ) {
     this.createAccountForm();
   }
 
   ionViewDidLoad() {
-    this.profileProvider.getById().subscribe(res => {
-      const profile = {
-        id: res.payload.id,
-        ...res.payload.data()
-      };
-      this.createAccountForm(profile);
+    this.alertProvider.showLoader(() => {
+      this.profileProvider.getById().subscribe(res => {
+        if (res.payload.id) {
+          const profile = {
+            id: res.payload.id,
+            ...res.payload.data()
+          };
+          this.createAccountForm(profile);
+          this.alertProvider.dismissLoader();
+        }
+      });
     });
   }
 
@@ -46,9 +46,11 @@ export class AccountPage {
       this.pinErrMsg = 'Lecturer Pin invalid';
       return;
     }
-
-    this.profileProvider.update(this.accountForm.value).then(res => {
-      this.navCtrl.pop();
+    this.alertProvider.showLoader(() => {
+      this.profileProvider.update(this.accountForm.value).then(res => {
+        this.navCtrl.pop();
+        this.alertProvider.dismissLoader();
+      });
     });
   }
 
@@ -60,8 +62,8 @@ export class AccountPage {
       lastname: [this.profile.lastname, Validators.required],
       firstname: [this.profile.firstname, Validators.required],
       department: [this.profile.department, Validators.required],
-      userType: [this.profile.userType],
       displayname: [this.profile.displayname, Validators.required],
+      userType: [this.profile.userType],
       pin: ['']
     });
   }

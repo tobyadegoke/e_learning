@@ -55,11 +55,5 @@ export class AuthServiceProvider {
       .catch(err => this.alertCtrl.create({ title: 'Info!', message: err.message, buttons: ['Ok'] }));
   }
 
-  getCurrentUser() {
-    return JSON.parse(localStorage.getItem('currentUser')) || {};
-  }
 
-  setCurrentUser(user: any) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
-  }
 }

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { AuthServiceProvider } from '../auth-service/auth-service';
 import { Forum, ForumComment } from './forum.model';
+import { TokenProvider } from '../token/token';
 
 @Injectable()
 export class ForumProvider {
 
 
-  constructor(private fs: AngularFirestore, private authProvider: AuthServiceProvider) { }
+  constructor(private fs: AngularFirestore, private tokenProvider: TokenProvider) { }
 
   forumEndpoint = 'forumList'
 
@@ -34,7 +34,7 @@ export class ForumProvider {
   like(forumId: string) {
     let forumRef = this.getForumById(forumId);
     let sub = forumRef.valueChanges().subscribe((forum: Forum) => {
-      let userId = this.authProvider.getCurrentUser().uid;
+      let userId = this.tokenProvider.getCurrentUser().uid;
       let userIdIndex = forum.likes.indexOf(userId);
       if (userIdIndex > -1) forum.likes.splice(userIdIndex, 1);
       else forum.likes.push(userId);
@@ -45,7 +45,7 @@ export class ForumProvider {
 
   hasLikied(likes: any): boolean {
     if (likes === null) return false;
-    return likes.includes(this.authProvider.getCurrentUser().uid);
+    return likes.includes(this.tokenProvider.getCurrentUser().uid);
   }
 
   update(forumId: string, forum: Forum) {
@@ -55,8 +55,8 @@ export class ForumProvider {
   saveForumComment(forumComment: ForumComment): Promise<void> {
     forumComment.id = this.fs.createId();
     forumComment.created = Date.now();
-    forumComment.authorId = this.authProvider.getCurrentUser().uid;
-    forumComment.authorName = this.authProvider.getCurrentUser().email.split('@')[0];
+    forumComment.authorId = this.tokenProvider.getCurrentUser().uid;
+    forumComment.authorName = this.tokenProvider.getCurrentUser().email.split('@')[0];
     const promise = this.fs.doc(`forumCommentList/${forumComment.id}`).set(forumComment);
     promise.then(() => {
       let sub = this.getForumById(forumComment.forumId).valueChanges().subscribe((forum: Forum) => {

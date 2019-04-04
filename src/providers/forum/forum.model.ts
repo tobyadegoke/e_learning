@@ -2,10 +2,10 @@ export class Forum {
     id?: string;
     title: string;
     description: string;
-    created: any;
-    likes: string[];
-    commentsCount: number;
-    closed: boolean;
+    created?: any;
+    likes?: string[];
+    commentsCount?: number;
+    closed?: boolean;
 
     constructor(data?: any) {
         data = data || {};

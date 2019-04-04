@@ -19,11 +19,19 @@ import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MessagesProvider } from '../providers/messages/messages';
 import { UserProfileProvider } from '../providers/profile/profile';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4569328102b4f474fd7d51b48d1c5da1710f83be
 import { AlertProvider } from '../providers/alert/alert';
 import { NotesProvider } from '../providers/notes/notes';
 import { ForumProvider } from '../providers/forum/forum';
 import { MeassageProvider } from '../providers/meassage/meassage';
 import { QuizProvider } from '../providers/quiz/quiz';
+<<<<<<< HEAD
+=======
+import { TokenProvider } from '../providers/token/token';
+>>>>>>> 4569328102b4f474fd7d51b48d1c5da1710f83be
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -48,11 +56,16 @@ import { QuizProvider } from '../providers/quiz/quiz';
     MessagesProvider,
     UserProfileProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+<<<<<<< HEAD
+=======
+    NotesProvider,
+>>>>>>> 4569328102b4f474fd7d51b48d1c5da1710f83be
     AlertProvider,
     NotesProvider,
     ForumProvider,
     MeassageProvider,
+    TokenProvider,
     QuizProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
