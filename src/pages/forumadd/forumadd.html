@@ -7,10 +7,10 @@
 <ion-content>
   <form [formGroup]="forumForm">
     <ion-item>
-      <ion-input placeholder="Title" formGroupName="title"></ion-input>
+      <ion-input placeholder="Title" formControlName="title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-textarea placeholder="Enter your question here" formGroupName="description"></ion-textarea>
+      <ion-textarea placeholder="Enter your question here" formControlName="description"></ion-textarea>
     </ion-item>
     <ion-footer>
       <ion-row>
@@ -21,8 +21,6 @@
           <button ion-button color="danger" style="width: 150px" round outline (click)="saveForum()">Save</button>
         </ion-col>
       </ion-row>
+    </ion-footer>
   </form>
-
-
-  </ion-footer>
 </ion-content>

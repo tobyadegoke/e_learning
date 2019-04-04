@@ -27,14 +27,16 @@ export class ForumaddPage {
     public navCtrl: NavController,
     private forumProvider: ForumProvider,
     private alertProvider: AlertProvider) {
+    this.createAddForumForm();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ForumaddPage');
+
   }
 
   saveForum() {
     this.alertProvider.showLoader(() => {
+      debugger;
       this.forumProvider.create(this.forumForm.value).then(res => {
         this.alertProvider.dismissLoader();
         this.alertProvider.showToast('Question added!');
@@ -47,7 +49,7 @@ export class ForumaddPage {
 
   }
 
-  createAddForumForm(forum: Forum) {
+  createAddForumForm(forum?: Forum) {
     this.forum = new Forum(forum);
     this.forumForm = this.fb.group({
       title: [this.forum.title, Validators.required],
