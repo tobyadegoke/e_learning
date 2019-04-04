@@ -19,6 +19,7 @@ import { config } from './app.config';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MessagesProvider } from '../providers/messages/messages';
 import { UserProfileProvider } from '../providers/profile/profile';
+
 import { AlertProvider } from '../providers/alert/alert';
 import { NotesProvider } from '../providers/notes/notes';
 import { ForumProvider } from '../providers/forum/forum';
@@ -49,12 +50,13 @@ import { TokenProvider } from '../providers/token/token';
     MessagesProvider,
     UserProfileProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    NotesProvider,
     AlertProvider,
     NotesProvider,
     ForumProvider,
     MeassageProvider,
-    QuizProvider,
-    TokenProvider
+    TokenProvider,
+    QuizProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -36,7 +36,6 @@ export class ForumaddPage {
 
   saveForum() {
     this.alertProvider.showLoader(() => {
-      debugger;
       this.forumProvider.create(this.forumForm.value).then(res => {
         this.alertProvider.dismissLoader();
         this.alertProvider.showToast('Question added!');

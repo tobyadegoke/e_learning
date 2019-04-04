@@ -16,7 +16,6 @@ export class ForumProvider {
     forum.created = Date.now();
     forum.likes = [];
     forum.commentsCount = 0;
-    debugger;
     return this.fs.doc(`${this.forumEndpoint}/${forum.id}`).set(forum);
   }
 
