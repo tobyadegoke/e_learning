@@ -3,6 +3,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from './profile.model';
 import { AuthServiceProvider } from '../auth-service/auth-service';
+import { TokenProvider } from '../token/token';
 
 /*
   Generated class for the ProfileProvider provider.
@@ -15,8 +16,8 @@ export class UserProfileProvider {
   public profileEndpoint = 'profiles';
   user: { uid: string; email: string };
 
-  constructor(public fs: AngularFirestore, public afAuth: AngularFireAuth, private authProvider: AuthServiceProvider) {
-    this.user = this.authProvider.getCurrentUser();
+  constructor(public fs: AngularFirestore, public afAuth: AngularFireAuth, private tokenProvider: TokenProvider) {
+    this.user = this.tokenProvider.getCurrentUser();
   }
 
   getList() {
@@ -44,7 +45,7 @@ export class UserProfileProvider {
     profile.userId = user.uid;
     profile.email = user.email;
     profile = <any>{ ...profile };
-    this.authProvider.setCurrentUser(user);
+    this.tokenProvider.setCurrentUser(user);
     return this.fs.doc(`${this.profileEndpoint}/${user.uid}`).set(profile);
   }
 

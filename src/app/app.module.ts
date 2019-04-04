@@ -24,6 +24,7 @@ import { NotesProvider } from '../providers/notes/notes';
 import { ForumProvider } from '../providers/forum/forum';
 import { MeassageProvider } from '../providers/meassage/meassage';
 import { QuizProvider } from '../providers/quiz/quiz';
+import { TokenProvider } from '../providers/token/token';
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -52,7 +53,8 @@ import { QuizProvider } from '../providers/quiz/quiz';
     NotesProvider,
     ForumProvider,
     MeassageProvider,
-    QuizProvider
+    QuizProvider,
+    TokenProvider
   ]
 })
 export class AppModule {}
