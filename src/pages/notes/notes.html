@@ -19,25 +19,10 @@
 
 
 <ion-content>
-  <ion-list>
-    <ion-item (click)="goToNotesdetail()">
-        <h2>Note 1</h2>
-        <p>I've had a pretty messed up day. If we just...</p>
-    </ion-item>
-    <ion-item (click)="goToNotesdetail()">
-        <h2>Note 2</h2>
-        
-        <p>I've had a pretty messed up day. If we just...</p>
-    </ion-item>
-    <ion-item (click)="goToNotesdetail()">
-        <h2>Note 3</h2>
-        
-        <p>I've had a pretty messed up day. If we just...</p>
-    </ion-item>
-    <ion-item (click)="goToNotesdetail()">
-        <h2>Note 4</h2>
-        
-        <p>I've had a pretty messed up day. If we just...</p>
+  <ion-list *ngFor="let n of noteList$">
+    <ion-item (click)="goToNotesdetail(n)">
+        <h2>{{n.title}}</h2>
+        <p>{{n.description}}</p>
     </ion-item>
   </ion-list>
 

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the ForumdetailPage page.
@@ -10,16 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-forumdetail',
-  templateUrl: 'forumdetail.html',
+  selector: "page-forumdetail",
+  templateUrl: "forumdetail.html"
 })
 export class ForumdetailPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  forum = {};
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ForumdetailPage');
+    this.forum = this.navParams.data;
   }
-
 }

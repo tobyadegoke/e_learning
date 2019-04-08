@@ -9,16 +9,24 @@
     <ion-item>
       <ion-input placeholder="Title" formControlName="title"></ion-input>
     </ion-item>
+    <div *ngIf="forumForm.controls['title'].touched">
+      <small style="color: red" *ngIf="forumForm.controls['title'].hasError('required')">Title cannot be empty</small>
+    </div>
     <ion-item>
       <ion-textarea placeholder="Enter your question here" formControlName="description"></ion-textarea>
     </ion-item>
+    <div *ngIf="forumForm.controls['description'].touched">
+      <small style="color: red" *ngIf="forumForm.controls['description'].hasError('required')">Question field cannot be
+        empty</small>
+    </div>
     <ion-footer>
       <ion-row>
         <ion-col text-center>
           <button ion-button color="danger" style="width: 150px" round outline (click)="goBack()">Cancel</button>
         </ion-col>
         <ion-col text-center>
-          <button ion-button color="danger" style="width: 150px" round outline (click)="saveForum()">Save</button>
+          <button ion-button color="danger" style="width: 150px" round outline (click)="saveForum()"
+            [disabled]="forumForm.invalid">Save</button>
         </ion-col>
       </ion-row>
     </ion-footer>

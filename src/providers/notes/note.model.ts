@@ -1,3 +1,6 @@
 export class Note {
-    id: string;
+  id: string;
+  description: any;
+  title: any;
+  userId?: string;
 }

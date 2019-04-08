@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ForumProvider } from '../../providers/forum/forum';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Forum } from '../../providers/forum/forum.model';
-import { AlertProvider } from '../../providers/alert/alert';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { ForumProvider } from "../../providers/forum/forum";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Forum } from "../../providers/forum/forum.model";
+import { AlertProvider } from "../../providers/alert/alert";
 
 /**
  * Generated class for the ForumaddPage page.
@@ -14,8 +14,8 @@ import { AlertProvider } from '../../providers/alert/alert';
 
 @IonicPage()
 @Component({
-  selector: 'page-forumadd',
-  templateUrl: 'forumadd.html',
+  selector: "page-forumadd",
+  templateUrl: "forumadd.html"
 })
 export class ForumaddPage {
   forumForm: FormGroup;
@@ -26,26 +26,27 @@ export class ForumaddPage {
     public navParams: NavParams,
     public navCtrl: NavController,
     private forumProvider: ForumProvider,
-    private alertProvider: AlertProvider) {
+    private alertProvider: AlertProvider
+  ) {
     this.createAddForumForm();
   }
 
-  ionViewDidLoad() {
-
-  }
+  ionViewDidLoad() {}
 
   saveForum() {
     this.alertProvider.showLoader(() => {
-      this.forumProvider.create(this.forumForm.value).then(res => {
-        this.alertProvider.dismissLoader();
-        this.alertProvider.showToast('Question added!');
-        this.goBack();
-      }, () => {
-        this.alertProvider.dismissLoader();
-        this.alertProvider.showToast('Question post failed!');
-      });
-    })
-
+      this.forumProvider.create(this.forumForm.value).then(
+        res => {
+          this.alertProvider.dismissLoader();
+          this.alertProvider.showToast("Question added!");
+          this.goBack();
+        },
+        () => {
+          this.alertProvider.dismissLoader();
+          this.alertProvider.showToast("Question post failed!");
+        }
+      );
+    });
   }
 
   createAddForumForm(forum?: Forum) {
@@ -59,5 +60,4 @@ export class ForumaddPage {
   goBack() {
     this.navCtrl.pop();
   }
-
 }

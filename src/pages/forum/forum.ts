@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { ForumProvider } from "../../providers/forum/forum";
+import { AlertProvider } from "../../providers/alert/alert";
 
 /**
  * Generated class for the ForumPage page.
@@ -10,23 +12,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-forum',
-  templateUrl: 'forum.html',
+  selector: "page-forum",
+  templateUrl: "forum.html"
 })
 export class ForumPage {
+  forumList$ = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private forumProvider: ForumProvider,
+    private alertProvider: AlertProvider
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ForumPage');
+    this.alertProvider.showLoader(() => {
+      this.forumProvider
+        .getForumList()
+        .valueChanges()
+        .subscribe((res: any) => {
+          this.forumList$ = res;
+        });
+
+      this.alertProvider.dismissLoader();
+    });
   }
 
   goToForumadd() {
-    this.navCtrl.push('ForumaddPage');
+    this.navCtrl.push("ForumaddPage");
   }
 
-  goToForumdetail() {
-    this.navCtrl.push('ForumdetailPage');
+  goToForumdetail(f) {
+    this.navCtrl.push("ForumdetailPage", f);
   }
 }

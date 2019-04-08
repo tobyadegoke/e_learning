@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Forum, ForumComment } from './forum.model';
-import { TokenProvider } from '../token/token';
+import { Injectable } from "@angular/core";
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from "angularfire2/firestore";
+import { Forum, ForumComment } from "./forum.model";
+import { TokenProvider } from "../token/token";
 
 @Injectable()
 export class ForumProvider {
+  constructor(
+    private fs: AngularFirestore,
+    private tokenProvider: TokenProvider
+  ) {}
 
-
-  constructor(private fs: AngularFirestore, private tokenProvider: TokenProvider) { }
-
-  forumEndpoint = 'forumList'
+  forumEndpoint = "forumList";
 
   create(forum: Forum): Promise<void> {
     forum.id = this.fs.createId();
@@ -20,7 +24,9 @@ export class ForumProvider {
   }
 
   getForumList(): AngularFirestoreCollection<Forum> {
-    return this.fs.collection(this.forumEndpoint, _ => _.orderBy('created', 'desc'));
+    return this.fs.collection(this.forumEndpoint, _ =>
+      _.orderBy("created", "desc")
+    );
   }
 
   deleteForum(forumId: string): Promise<void> {
@@ -43,7 +49,7 @@ export class ForumProvider {
     });
   }
 
-  hasLikied(likes: any): boolean {
+  hasLiked(likes: any): boolean {
     if (likes === null) return false;
     return likes.includes(this.tokenProvider.getCurrentUser().uid);
   }
@@ -56,20 +62,29 @@ export class ForumProvider {
     forumComment.id = this.fs.createId();
     forumComment.created = Date.now();
     forumComment.authorId = this.tokenProvider.getCurrentUser().uid;
-    forumComment.authorName = this.tokenProvider.getCurrentUser().email.split('@')[0];
-    const promise = this.fs.doc(`forumCommentList/${forumComment.id}`).set(forumComment);
+    forumComment.author = this.tokenProvider
+      .getCurrentUser()
+      .email.split("@")[0];
+    const promise = this.fs
+      .doc(`forumCommentList/${forumComment.id}`)
+      .set(forumComment);
     promise.then(() => {
-      let sub = this.getForumById(forumComment.forumId).valueChanges().subscribe((forum: Forum) => {
-        forum.commentsCount += 1;
-        this.update(forum.id, forum);
-        sub.unsubscribe();
-      });
+      let sub = this.getForumById(forumComment.forumId)
+        .valueChanges()
+        .subscribe((forum: Forum) => {
+          forum.commentsCount += 1;
+          this.update(forum.id, forum);
+          sub.unsubscribe();
+        });
     });
     return promise;
   }
 
-  getForumCommentList(forumId: string): AngularFirestoreCollection<ForumComment> {
-    return this.fs.collection('forumCommentList', _ => _.orderBy('created').where("forumId", "==", forumId));
+  getForumCommentList(
+    forumId: string
+  ): AngularFirestoreCollection<ForumComment> {
+    return this.fs.collection("forumCommentList", _ =>
+      _.orderBy("created").where("forumId", "==", forumId)
+    );
   }
-
 }

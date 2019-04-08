@@ -14,12 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'notesdetail.html',
 })
 export class NotesdetailPage {
+  note = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NotesdetailPage');
+    this.note = this.navParams.data;
   }
 
 }

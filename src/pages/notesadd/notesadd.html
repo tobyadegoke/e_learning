@@ -14,22 +14,30 @@
 
 
 <ion-content>
-<ion-item>
-  <ion-input placeholder="Title"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-textarea placeholder="Enter your notes here"></ion-textarea>
-</ion-item>
-  <ion-footer>
-     
-          <ion-row>
-              <ion-col text-center>
-              <button ion-button color="danger" style="width: 150px" round outline>Cancel</button>
-              </ion-col>
-              <ion-col text-center>
-                  <button ion-button color="danger" style="width: 150px" round outline>Save</button>
-                  </ion-col>
-            </ion-row>
-     
+  <form [formGroup]="noteForm">
+    <ion-item>
+      <ion-input placeholder="Title" formControlName="title"></ion-input>
+    </ion-item>
+    <div *ngIf="noteForm.controls['title'].touched">
+      <small style="color: red" *ngIf="noteForm.controls['title'].hasError('required')">Title cannot be empty</small>
+    </div>
+    <ion-item>
+      <ion-textarea placeholder="Enter your notes here" formControlName="description"></ion-textarea>
+    </ion-item>
+    <div *ngIf="noteForm.controls['description'].touched">
+      <small style="color: red" *ngIf="noteForm.controls['description'].hasError('required')">Note cannot be
+        empty</small>
+    </div>
+    <ion-footer>
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button color="danger" style="width: 150px" round outline (click)="goBack()">Cancel</button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button color="danger" style="width: 150px" round outline (click)="saveNote()"
+            [disabled]="noteForm.invalid">Save</button>
+        </ion-col>
+      </ion-row>
     </ion-footer>
+  </form>
 </ion-content>

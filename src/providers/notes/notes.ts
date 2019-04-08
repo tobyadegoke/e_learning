@@ -1,21 +1,27 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Note } from './note.model';
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "angularfire2/firestore";
+import { Note } from "./note.model";
+import { TokenProvider } from "../token/token";
 
 @Injectable()
 export class NotesProvider {
+  constructor(
+    public fs: AngularFirestore,
+    private tokenProvider: TokenProvider
+  ) {}
 
-  constructor(public fs: AngularFirestore) {
-  }
-
-  notesEndpoint = 'noteList'
+  notesEndpoint = "noteList";
 
   getList() {
-    return this.fs.collection(this.notesEndpoint).snapshotChanges();
+    return this.fs
+      .collection(this.notesEndpoint, _ =>
+        _.where("userId", "==", this.tokenProvider.getCurrentUser().uid)
+      )
+      .valueChanges();
   }
 
   getById(id: string) {
-    return this.fs.doc(`${this.notesEndpoint}/${id}`).snapshotChanges();
+    return this.fs.doc(`${this.notesEndpoint}/${id}`);
   }
 
   delete(id: string) {
@@ -31,7 +37,8 @@ export class NotesProvider {
 
   create(note: Note) {
     let newNote = { ...note };
+    newNote.id = this.fs.createId();
+    newNote.userId = this.tokenProvider.getCurrentUser().uid;
     return this.fs.collection(this.notesEndpoint).add(newNote);
   }
-
 }

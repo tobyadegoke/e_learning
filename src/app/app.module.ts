@@ -1,37 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { VideoPlayer } from '@ionic-native/video-player';
+import { BrowserModule } from "@angular/platform-browser";
+import { ErrorHandler, NgModule } from "@angular/core";
+import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { StatusBar } from "@ionic-native/status-bar";
+import { VideoPlayer } from "@ionic-native/video-player";
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { MyApp } from "./app.component";
+import { HomePage } from "../pages/home/home";
 
-import { UserProvider } from '../providers/user/user';
-import { HttpClientModule } from '@angular/common/http';
+import { UserProvider } from "../providers/user/user";
+import { HttpClientModule } from "@angular/common/http";
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { config } from './app.config';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
-import { MessagesProvider } from '../providers/messages/messages';
-import { UserProfileProvider } from '../providers/profile/profile';
-<<<<<<< HEAD
-=======
-
->>>>>>> 4569328102b4f474fd7d51b48d1c5da1710f83be
-import { AlertProvider } from '../providers/alert/alert';
-import { NotesProvider } from '../providers/notes/notes';
-import { ForumProvider } from '../providers/forum/forum';
-import { MeassageProvider } from '../providers/meassage/meassage';
-import { QuizProvider } from '../providers/quiz/quiz';
-<<<<<<< HEAD
-=======
-import { TokenProvider } from '../providers/token/token';
->>>>>>> 4569328102b4f474fd7d51b48d1c5da1710f83be
+import { AngularFireModule } from "angularfire2";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { config } from "./app.config";
+import { AuthServiceProvider } from "../providers/auth-service/auth-service";
+import { MessagesProvider } from "../providers/messages/messages";
+import { UserProfileProvider } from "../providers/profile/profile";
+import { AlertProvider } from "../providers/alert/alert";
+import { NotesProvider } from "../providers/notes/notes";
+import { ForumProvider } from "../providers/forum/forum";
+import { QuizProvider } from "../providers/quiz/quiz";
+import { TokenProvider } from "../providers/token/token";
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -56,16 +48,12 @@ import { TokenProvider } from '../providers/token/token';
     MessagesProvider,
     UserProfileProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-<<<<<<< HEAD
-=======
     NotesProvider,
->>>>>>> 4569328102b4f474fd7d51b48d1c5da1710f83be
     AlertProvider,
     NotesProvider,
     ForumProvider,
-    MeassageProvider,
     TokenProvider,
     QuizProvider
   ]
 })
-export class AppModule { }
+export class AppModule {}

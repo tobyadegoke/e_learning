@@ -19,88 +19,36 @@
 
 
 <ion-content>
-  <ion-card (click)="goToForumdetail()">
+  <ion-card (click)="goToForumdetail(f)" *ngFor="let f of forumList$">
 
     <ion-item>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
+      <h2>{{f.title}}</h2>
+      <p>{{f.created | date}}</p>
     </ion-item>
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      <p>{{f.description}}</p>
     </ion-card-content>
-  
+
     <ion-row>
-      
+
       <ion-col>
         <button ion-button icon-start clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>{{f.commentsCount}} Comments</div>
         </button>
       </ion-col>
       <ion-col align-self-center text-center>
         <ion-note>
-            Status: Closed
+          Status: Closed
         </ion-note>
       </ion-col>
     </ion-row>
-  
-  </ion-card>
 
-  <ion-card (click)="goToForumdetail()">
-
-    <ion-item>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
-    </ion-item>
-    <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
-    </ion-card-content>
-  
-    <ion-row>
-      
-      <ion-col>
-        <button ion-button icon-start clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
-      </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-            Status: Open
-        </ion-note>
-      </ion-col>
-    </ion-row>
-  
-  </ion-card>
-  <ion-card (click)="goToForumdetail()">
-
-    <ion-item>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
-    </ion-item>
-    <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
-    </ion-card-content>
-  
-    <ion-row>
-      
-      <ion-col>
-        <button ion-button icon-start clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
-      </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-          Status: Open
-        </ion-note>
-      </ion-col>
-    </ion-row>
   </ion-card>
 
   <ion-fab right bottom (click)="goToForumadd()">
-      <button ion-fab color="danger">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-fab>
+    <button ion-fab color="danger">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
