@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{userprofile.displayname}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngFor="let m of messageList$">
+    <ion-card [color]="m.receiverId === userprofile.userId? 'primary': ''">
+      <ion-card-content [style.text-align]="m.receiverId === userprofile.userId ? 'right': ''">
+        <small>{{m.createdOn|date:'medium'}}</small>
+        <p>{{m.message}}</p>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+<ion-footer padding>
+  <form>
+    <ion-row>
+      <ion-input floating placeholder=" Enter message" [(ngModel)]="content" name="content">
+      </ion-input>
+      <button ion-button color="danger" outline (click)="sendMessage()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-row>
+  </form>
+</ion-footer>

@@ -7,24 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-      <ion-buttons end>
-          <button ion-button icon-only color="danger">
-            <ion-icon name="clipboard"></ion-icon>
-          </button>
-        </ion-buttons>
+    <ion-title>View Note</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="danger" (click)="presentActionSheet()">
+        <ion-icon name="clipboard"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <ion-card>
-        <ion-card-header>
-          {{note.title}}
-        </ion-card-header>
-    
-        <ion-card-content>
-         {{note.description}}
-        </ion-card-content>
-      </ion-card>
+  <ion-card>
+    <ion-card-header>
+      {{note.title}}
+    </ion-card-header>
+
+    <ion-card-content>
+      {{note.description}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

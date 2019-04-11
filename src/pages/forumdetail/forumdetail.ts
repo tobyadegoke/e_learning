@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { ForumProvider } from "../../providers/forum/forum";
+import { ForumComment, Forum } from "../../providers/forum/forum.model";
 
 /**
  * Generated class for the ForumdetailPage page.
@@ -14,10 +16,35 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
   templateUrl: "forumdetail.html"
 })
 export class ForumdetailPage {
-  forum = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  forum = new Forum();
+  message: string;
+  comments = [];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private forumProvider: ForumProvider
+  ) {}
 
   ionViewDidLoad() {
     this.forum = this.navParams.data;
+    this.getComments();
+  }
+
+  getComments() {
+    this.forumProvider
+      .getForumCommentList(this.forum.id)
+      .valueChanges()
+      .subscribe(res => {
+        this.comments = res;
+      });
+  }
+
+  saveComment() {
+    let forumComment = new ForumComment();
+    forumComment.forumId = this.forum.id;
+    forumComment.message = this.message;
+    this.forumProvider.saveForumComment(forumComment).then(res => {
+      this.message = "";
+    });
   }
 }

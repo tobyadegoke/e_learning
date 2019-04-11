@@ -8,7 +8,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class HomePage {
   email: string;
-  userProfile;
+  userProfile: any;
 
   constructor(public navCtrl: NavController, private authServiceProvider: AuthServiceProvider) {
     this.email = localStorage.getItem('myappEmail');

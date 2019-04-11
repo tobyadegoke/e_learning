@@ -14,7 +14,7 @@
     <ion-card-content>
       <ion-item>
         <ion-icon name="person" item-start large></ion-icon>
-        <h2>John Bosco</h2>
+        <h2>{{forum.author}}</h2>
         <p>{{forum.created | date}}</p>
       </ion-item>
     </ion-card-content>
@@ -30,24 +30,21 @@
   <ion-row>
     <ion-col text-center>Comments</ion-col>
   </ion-row>
-  <ion-card>
+  <ion-card *ngFor="let c of comments">
     <ion-card-header>
-      Comment author
+      {{c.author}}
     </ion-card-header>
     <ion-card-content>
-      Comments
+      {{c.message}}
     </ion-card-content>
   </ion-card>
-
- 
-
 </ion-content>
 <ion-footer padding>
   <ion-row>
-    <ion-input floating placeholder="Enter a comment"></ion-input>
-    <button ion-button color="danger" outline item-end icon-start>
+    <ion-input floating placeholder="Enter a comment" [(ngModel)]="message"></ion-input>
+    <button ion-button color="danger" outline item-end icon-start (click)="saveComment()">
       <ion-icon name="send"></ion-icon>
       Post
     </button>
-    </ion-row>
-  </ion-footer>
+  </ion-row>
+</ion-footer>

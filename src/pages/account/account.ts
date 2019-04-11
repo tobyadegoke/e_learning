@@ -5,6 +5,7 @@ import { Profile } from "../../providers/profile/profile.model";
 import { UserProfileProvider } from "../../providers/profile/profile";
 import { AlertProvider } from "../../providers/alert/alert";
 import { HomePage } from "../home/home";
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 
 @IonicPage()
 @Component({
@@ -21,7 +22,8 @@ export class AccountPage {
     public navParams: NavParams,
     private fb: FormBuilder,
     private profileProvider: UserProfileProvider,
-    private alertProvider: AlertProvider
+    private alertProvider: AlertProvider,
+    private authServiceProvider: AuthServiceProvider
   ) {
     this.createAccountForm();
   }
@@ -29,15 +31,13 @@ export class AccountPage {
   ionViewDidLoad() {
     this.alertProvider.showLoader(() => {
       this.profileProvider.getById().subscribe(res => {
-        setTimeout(() => {
-          if (res.payload.id) {
-            const profile = {
-              id: res.payload.id,
-              ...res.payload.data()
-            };
-            this.createAccountForm(profile);
-          }
-        }, 0);
+        if (res.payload.id) {
+          const profile = {
+            id: res.payload.id,
+            ...res.payload.data()
+          };
+          this.createAccountForm(profile);
+        }
         this.alertProvider.dismissLoader();
       });
     });
@@ -52,6 +52,7 @@ export class AccountPage {
       this.pinErrMsg = "Lecturer Pin invalid";
       return;
     }
+    this.accountForm.value.isLecturer = true;
     this.alertProvider.showLoader(() => {
       this.profileProvider.update(this.accountForm.value).then(res => {
         this.navCtrl.setRoot(HomePage);
@@ -65,12 +66,36 @@ export class AccountPage {
     this.accountForm = this.fb.group({
       email: [this.profile.email],
       semester: [this.profile.semester],
-      lastname: [this.profile.lastname, Validators.required],
-      firstname: [this.profile.firstname, Validators.required],
+      lastname: [
+        this.profile.lastname,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("[a-zA-Z ]*")
+        ])
+      ],
+      firstname: [
+        this.profile.firstname,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("[a-zA-Z ]*")
+        ])
+      ],
       department: [this.profile.department, Validators.required],
-      displayname: [this.profile.displayname, Validators.required],
+      displayname: [
+        this.profile.displayname,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("[a-zA-Z ]*")
+        ])
+      ],
       userType: [this.profile.userType],
       pin: [""]
+    });
+  }
+
+  logout() {
+    this.authServiceProvider.logout().then(() => {
+      this.navCtrl.setRoot("IntroPage");
     });
   }
 }

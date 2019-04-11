@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
- * Generated class for the MessagesPage page.
+ * Generated class for the AddmediaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,17 +10,13 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 @IonicPage()
 @Component({
-  selector: "page-messages",
-  templateUrl: "messages.html"
+  selector: "page-addmedia",
+  templateUrl: "addmedia.html"
 })
-export class MessagesPage {
+export class AddmediaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad MessagesPage");
-  }
-
-  goToMessageStudent() {
-    this.navCtrl.push("MesssagestudentPage");
+    console.log("ionViewDidLoad AddmediaPage");
   }
 }

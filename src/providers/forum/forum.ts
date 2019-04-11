@@ -20,7 +20,8 @@ export class ForumProvider {
     forum.created = Date.now();
     forum.likes = [];
     forum.commentsCount = 0;
-    return this.fs.doc(`${this.forumEndpoint}/${forum.id}`).set(forum);
+    forum.author = this.tokenProvider.getCurrentUser().email.split("@")[0];
+    return this.fs.doc(`${this.forumEndpoint}/${forum.id}`).set({ ...forum });
   }
 
   getForumList(): AngularFirestoreCollection<Forum> {
@@ -55,10 +56,10 @@ export class ForumProvider {
   }
 
   update(forumId: string, forum: Forum) {
-    return this.fs.doc(`${this.forumEndpoint}/${forumId}`).update(forum);
+    return this.fs.doc(`${this.forumEndpoint}/${forumId}`).update({ ...forum });
   }
 
-  saveForumComment(forumComment: ForumComment): Promise<void> {
+  saveForumComment(forumComment: ForumComment) {
     forumComment.id = this.fs.createId();
     forumComment.created = Date.now();
     forumComment.authorId = this.tokenProvider.getCurrentUser().uid;
@@ -67,7 +68,7 @@ export class ForumProvider {
       .email.split("@")[0];
     const promise = this.fs
       .doc(`forumCommentList/${forumComment.id}`)
-      .set(forumComment);
+      .set({ ...forumComment });
     promise.then(() => {
       let sub = this.getForumById(forumComment.forumId)
         .valueChanges()

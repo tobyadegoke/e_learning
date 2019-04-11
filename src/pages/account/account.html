@@ -12,10 +12,10 @@
 
 <ion-content>
   <form [formGroup]="accountForm" (ng-submit)="submit()">
-    <!-- <ion-item>
+    <ion-item>
       <ion-label>Email</ion-label>
       <ion-input formControlName="email" readonly></ion-input>
-    </ion-item> -->
+    </ion-item>
     <ion-item>
       <ion-label>First Name</ion-label>
       <ion-input formControlName="firstname"></ion-input>
@@ -35,6 +35,7 @@
         <ion-option>Biomedical Engineering</ion-option>
         <ion-option>Computer Science</ion-option>
         <ion-option>Electronic and Communication Engineering</ion-option>
+        <ion-option>Oil and Gas Engineering</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -44,6 +45,10 @@
         <ion-option>2</ion-option>
         <ion-option>3</ion-option>
         <ion-option>4</ion-option>
+        <ion-option>5</ion-option>
+        <ion-option>6</ion-option>
+        <ion-option>7</ion-option>
+        <ion-option>8</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -65,6 +70,9 @@
         <button (click)="submit()" [disabled]="accountForm.invalid" ion-button color="danger" style="width: 150px" round
           outline>
           Save
+        </button>
+        <button (click)="logout()" ion-button color="danger" style="width: 150px" round outline>
+          Logout
         </button>
       </ion-col>
     </ion-row>

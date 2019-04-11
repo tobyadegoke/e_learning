@@ -19,8 +19,8 @@
 
 
 <ion-content>
-  <ion-list *ngFor="let n of noteList$">
-    <ion-item (click)="goToNotesdetail(n)">
+  <ion-list >
+    <ion-item (click)="goToNotesdetail(n)" *ngFor="let n of noteList$">
         <h2>{{n.title}}</h2>
         <p>{{n.description}}</p>
     </ion-item>
