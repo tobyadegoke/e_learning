@@ -1,0 +1,60 @@
+<!--
+  Generated template for the QuizaddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Quiz</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="quiz.title" name="title" placeholder="Quiz Title"></ion-input>
+  </ion-item>
+  <p text-center>Question {{quiz.questions.length + 1}}</p>
+  <ion-item>
+    <ion-textarea [(ngModel)]="question.question" name="question" placeholder="Quiz question"></ion-textarea>
+  </ion-item>
+  <ion-list radio-group>
+    <ion-list-header>
+      Answers
+    </ion-list-header>
+
+    <ion-item *ngFor="let a of selAnswers; let i = index">
+      <ion-label>{{a.answer}}</ion-label>
+      <ion-radio (click)="setCorrectAnswer(i)" [checked]="i === selectedAnswer"></ion-radio>
+      <button (click)="removeAnswer(i)" ion-button color="danger" clear item-end icon-start>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-item>
+      <ion-input [(ngModel)]="answer.answer" name="answer" placeholder="Add Answer"></ion-input>
+      <button (click)="addAnswer()" ion-button color="danger" clear item-end icon-start>
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <!-- <ion-col>
+      <button (click)="prev()" ion-button color="danger" [disabled]=" this.quiz.questions.length < 1" round outline
+        block>Prev</button>
+    </ion-col> -->
+    <ion-col>
+      <button (click)="next()" ion-button color="danger" round outline block>Next</button>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+    <button (click)="submit()" ion-button color="danger" full round>Submit Quiz</button>
+  </ion-item>
+</ion-footer>

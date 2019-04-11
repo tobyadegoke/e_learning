@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the QuizPage page.
@@ -10,20 +10,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-quiz',
-  templateUrl: 'quiz.html',
+  selector: "page-quiz",
+  templateUrl: "quiz.html"
 })
 export class QuizPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuizPage');
+    console.log("ionViewDidLoad QuizPage");
   }
 
   goToQuizstart() {
-    this.navCtrl.push('QuizstartPage');
+    this.navCtrl.push("QuizstartPage");
   }
 
+  goToQuizAdd() {
+    this.navCtrl.push("QuizaddPage");
+  }
 }
